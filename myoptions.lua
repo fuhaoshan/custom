@@ -81,3 +81,13 @@ vim.o.showtabline = 1
 vim.o.showmode = false
 -- 配置剪切板
 vim.opt.clipboard = "unnamedplus"
+
+-- wsl和宿主机剪贴板互通
+if (vim.fn.has('wsl')) then
+  vim.cmd [[
+  augroup Yank
+  autocmd!
+  autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+  augroup END
+  ]]
+end
