@@ -82,6 +82,17 @@ vim.o.showmode = false
 -- 配置剪切板
 vim.opt.clipboard = "unnamedplus"
 
+vim.cmd [[
+  augroup user_colors
+    au ColorScheme * hi Normal ctermbg=none guibg=none
+    au ColorScheme * hi SignColumn ctermbg=none guibg=none
+    au ColorScheme * hi NormalNC ctermbg=none guibg=none
+    au ColorScheme * hi MsgArea ctermbg=none guibg=none
+    au ColorScheme * hi TelescopeBorder ctermbg=none guibg=none
+    au ColorScheme * hi NvimTreeNormal ctermbg=none guibg=none
+    let &fcs='eob: '
+  augroup END
+]]
 -- wsl和宿主机剪贴板互通
 if (vim.fn.has('wsl')) then
   vim.cmd [[
